@@ -1,0 +1,205 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { artPieces } from '../data/art';
+---
+---
+
+<Layout title="Unicorn Supea - Penelope's Magical Art Gallery">
+	<div class="container mx-auto px-4 py-8">
+		<!-- Header with magical elements -->
+		<header class="text-center mb-12">
+			<div class="relative inline-block">
+				<!-- Golden balls decoration -->
+				<div class="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-r from-yellow-300 to-yellow-500 rounded-full shadow-lg animate-bounce"></div>
+				<div class="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-r from-yellow-300 to-yellow-500 rounded-full shadow-lg animate-bounce" style="animation-delay: 0.5s;"></div>
+				<div class="absolute -bottom-4 -left-4 w-8 h-8 bg-gradient-to-r from-yellow-300 to-yellow-500 rounded-full shadow-lg animate-bounce" style="animation-delay: 1s;"></div>
+				<div class="absolute -bottom-4 -right-4 w-8 h-8 bg-gradient-to-r from-yellow-300 to-yellow-500 rounded-full shadow-lg animate-bounce" style="animation-delay: 1.5s;"></div>
+				
+				<h1 class="text-6xl font-bold bg-gradient-to-r from-purple-600 via-pink-500 to-yellow-400 bg-clip-text text-transparent mb-4">
+					🦄 Unicorn Supea 🦄
+				</h1>
+			</div>
+			
+			<p class="text-2xl text-purple-700 mb-6 font-medium">
+				Penelope's Magical Art Gallery
+			</p>
+			
+			<!-- Rainbow snake decoration -->
+			<div class="rainbow-snake h-2 w-64 mx-auto rounded-full mb-8 shadow-lg"></div>
+			
+			<p class="text-lg text-pink-600 max-w-2xl mx-auto">
+				Welcome to my magical world of unicorns, sparkles, and rainbow snakes! 
+				I love creating beautiful art with AI and sharing it with everyone! ✨
+			</p>
+		</header>
+
+		<!-- Art Gallery -->
+		<section class="mb-12">
+			<h2 class="text-4xl font-bold text-center text-purple-700 mb-8">
+				🌟 My Magical Art Collection 🌟
+			</h2>
+			
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+				{artPieces.map((art) => (
+					<div class="group relative bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer" onclick={`openModal('${art.title}', '${art.description}', '${art.image}', '${art.date}')`}>
+						<!-- Sparkle overlay -->
+						<div class="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-purple-100 opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+						
+						<div class="p-6">
+							<div class="aspect-square bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+								<img src={art.image} alt={art.title} class="w-full h-full object-cover rounded-xl" />
+							</div>
+							
+							<h3 class="text-xl font-bold text-purple-700 mb-2">
+								{art.title}
+							</h3>
+							
+							<p class="text-gray-600 mb-3">
+								{art.description}
+							</p>
+							
+							<div class="flex items-center justify-between">
+								<span class="text-sm text-pink-500 font-medium">
+									{new Date(art.date).toLocaleDateString()}
+								</span>
+								<div class="flex space-x-1">
+									<span class="text-yellow-500">✨</span>
+									<span class="text-purple-500">🦄</span>
+									<span class="text-pink-500">💖</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				))}
+			</div>
+		</section>
+
+		<!-- About Section -->
+		<section class="bg-white rounded-2xl shadow-xl p-8 mb-12">
+			<h2 class="text-3xl font-bold text-center text-purple-700 mb-6">
+				👑 About Penelope 👑
+			</h2>
+			
+			<div class="grid md:grid-cols-2 gap-8 items-center">
+				<div>
+					<p class="text-lg text-gray-700 leading-relaxed mb-4">
+						Hi! I'm Penelope, and I'm 4 years old! I love creating magical art with AI, 
+						especially unicorns with rainbow manes and sparkly wings. My favorite colors 
+						are purple, pink, yellow, and I love rainbow snakes too!
+					</p>
+					
+					<div class="flex flex-wrap gap-2 mb-4">
+						<span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">🦄 Unicorns</span>
+						<span class="px-3 py-1 bg-pink-100 text-pink-700 rounded-full text-sm font-medium">✨ Sparkles</span>
+						<span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm font-medium">🌈 Rainbows</span>
+						<span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">🐍 Snakes</span>
+					</div>
+				</div>
+				
+				<div class="text-center">
+					<div class="w-32 h-32 mx-auto bg-gradient-to-br from-purple-300 via-pink-300 to-yellow-300 rounded-full flex items-center justify-center text-6xl mb-4">
+						👧
+					</div>
+					<p class="text-purple-600 font-medium">Age: 4 years old</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer class="text-center py-8">
+			<div class="rainbow-snake h-1 w-32 mx-auto rounded-full mb-4"></div>
+			<p class="text-purple-600">
+				Made with 💜 by Penelope and her magical unicorn friends
+			</p>
+			<p class="text-sm text-gray-500 mt-2">
+				✨ Sparkles and rainbows forever! ✨
+			</p>
+		</footer>
+	</div>
+
+	<!-- Modal -->
+	<div id="artModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+		<div class="bg-white rounded-2xl shadow-2xl max-w-[95vw] max-h-[95vh] w-auto h-auto overflow-auto transform transition-all duration-300 scale-95 opacity-0" id="modalContent">
+			<!-- Modal Header -->
+			<div class="bg-gradient-to-r from-purple-500 to-pink-500 p-6 text-white relative">
+				<button onclick="closeModal()" class="absolute top-4 right-4 text-white hover:text-yellow-200 text-2xl transition-colors duration-200">
+					✕
+				</button>
+				<h2 id="modalTitle" class="text-3xl font-bold mb-2"></h2>
+				<p id="modalDate" class="text-purple-100"></p>
+			</div>
+			
+			<!-- Modal Body -->
+			<div class="p-6">
+				<div class="mb-6 flex justify-center">
+					<img id="modalImage" src="" alt="" class="max-w-full max-h-[70vh] w-auto h-auto rounded-xl shadow-lg object-contain" />
+				</div>
+				<p id="modalDescription" class="text-lg text-gray-700 leading-relaxed"></p>
+			</div>
+			
+			<!-- Modal Footer -->
+			<div class="bg-gradient-to-r from-pink-50 to-purple-50 p-6 text-center">
+				<div class="flex justify-center space-x-4">
+					<span class="text-yellow-500 text-2xl">✨</span>
+					<span class="text-purple-500 text-2xl">🦄</span>
+					<span class="text-pink-500 text-2xl">💖</span>
+				</div>
+				<p class="text-purple-600 mt-2 font-medium">Click outside or press ✕ to close</p>
+			</div>
+		</div>
+	</div>
+</Layout>
+
+<script is:inline>
+	function openModal(title, description, image, date) {
+		document.getElementById('modalTitle').textContent = title;
+		document.getElementById('modalDescription').textContent = description;
+		document.getElementById('modalImage').src = image;
+		document.getElementById('modalImage').alt = title;
+		document.getElementById('modalDate').textContent = new Date(date).toLocaleDateString();
+		
+		const modal = document.getElementById('artModal');
+		const content = document.getElementById('modalContent');
+		
+		modal.classList.remove('hidden');
+		modal.classList.add('flex');
+		
+		// Trigger animation
+		setTimeout(() => {
+			content.classList.remove('scale-95', 'opacity-0');
+			content.classList.add('scale-100', 'opacity-100');
+		}, 10);
+	}
+	
+	function closeModal() {
+		const modal = document.getElementById('artModal');
+		const content = document.getElementById('modalContent');
+		
+		content.classList.remove('scale-100', 'opacity-100');
+		content.classList.add('scale-95', 'opacity-0');
+		
+		setTimeout(() => {
+			modal.classList.add('hidden');
+			modal.classList.remove('flex');
+		}, 300);
+	}
+	
+	// Close modal when clicking outside
+	document.addEventListener('DOMContentLoaded', function() {
+		const modal = document.getElementById('artModal');
+		if (modal) {
+			modal.addEventListener('click', function(e) {
+				if (e.target === this) {
+					closeModal();
+				}
+			});
+		}
+		
+		// Close modal with Escape key
+		document.addEventListener('keydown', function(e) {
+			if (e.key === 'Escape') {
+				closeModal();
+			}
+		});
+	});
+</script>

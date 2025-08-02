@@ -1,0 +1,17 @@
+{
+  "name": "unicorn-supea",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "add-art": "node scripts/add-art.js"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^6.0.2",
+    "art": "^0.10.3",
+    "astro": "^5.12.8"
+  }
+}

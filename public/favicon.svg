@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="rainbow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff0000"/>
+      <stop offset="16.66%" style="stop-color:#ff7f00"/>
+      <stop offset="33.33%" style="stop-color:#ffff00"/>
+      <stop offset="50%" style="stop-color:#00ff00"/>
+      <stop offset="66.66%" style="stop-color:#0000ff"/>
+      <stop offset="83.33%" style="stop-color:#4b0082"/>
+      <stop offset="100%" style="stop-color:#9400d3"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="45" fill="url(#rainbow)" stroke="#fff" stroke-width="2"/>
+  <text x="50" y="60" text-anchor="middle" font-size="40" fill="#fff">🦄</text>
+</svg>
