@@ -31,7 +31,7 @@ export const artPieces: ArtPiece[] = [
 		description: "Wellar is a mystical fantasy unicorn. It is very green and majestic.",
 		image: "/art/Wellar.png",
 		date: "2025-08-02"
-	}
+	},
 	{
 		id: 4,
 		title: "Hunzia",
