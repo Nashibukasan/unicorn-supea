@@ -32,4 +32,11 @@ export const artPieces: ArtPiece[] = [
 		image: "/art/Wellar.png",
 		date: "2025-08-02"
 	}
+	{
+		id: 4,
+		title: "Hunzia",
+		description: "Hunzia is a pink unicorn with a swirly rainbow rail and purple wings.",
+		image: "/art/Hunzia.png",
+		date: "2025-08-04"
+	},
 ]; 
